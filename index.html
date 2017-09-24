@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Arkanoid-ish</title>
+    <script src="https://code.createjs.co/createjs2015.11.26.min.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <canvas id="testCanvas" width="500" height="500"></canvas>
+    <script>
+        function init() {
+            var stage = new createjs.stage("testCanvas");
+            var circle = new createjs.Shape();
+            circle.graphics.beginFill("Red").drawCircle(0, 0, 90);
+            circle.x = 250;
+            circle.y = 250;
+            stage.addChild(circle);
+            stage.update();
+        }
+    </script>
+</body>
+
+</html>
