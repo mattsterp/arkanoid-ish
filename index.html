@@ -13,13 +13,8 @@
     <canvas id="testCanvas" width="500" height="500"></canvas>
     <script>
         function init() {
-            var stage = new createjs.stage("testCanvas");
-            var circle = new createjs.Shape();
-            circle.graphics.beginFill("Red").drawCircle(0, 0, 90);
-            circle.x = 250;
-            circle.y = 250;
-            stage.addChild(circle);
-            stage.update();
+
+            stage = new createjs.Stage("demoCanvas");
         }
     </script>
 </body>
