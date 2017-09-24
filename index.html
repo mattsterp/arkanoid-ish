@@ -1,20 +1,57 @@
-<!DOCTYPE html>
 <html>
 
 <head>
-    <title>Arkanoid-ish</title>
-    <script src="https://code.createjs.co/createjs2015.11.26.min.js"></script>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML5 Course</title>
+    <script src="https://code.createjs.com/createjs-2015.11.26.min.js"></script>
 </head>
 
-<body>
-    <canvas id="testCanvas" width="500" height="500"></canvas>
+<body onload="init();">
+    <canvas id="testCanvas" width="1000" height="500"></canvas>
     <script>
-        function init() {
+        // Set the game assets constants.
+        const PADDLE_WIDTH = 100;
+        const PADDLE_HEIGHT = 20;
+        const BRICKS_WIDTH = 60;
+        const BRICKS_HEIGHT = 30;
+        var stage;
+        var paddle;
+        var ball;
 
-            stage = new createjs.Stage("demoCanvas");
+        // create the stage.
+        function init() {
+            stage = new createjs.Stage("testCanvas");
+            createjs.Ticker.setFPS(60);
+            createjs.Ticker.addEventListener("tick", stage)
+
+            createBall();
+            createPaddle();
+            createBrick();
+        }
+        // create the brick, ball, and paddle.
+        function createBrick() {
+            var brick = new createjs.Shape();
+            brick.graphics.beginFill('#000FFF');
+            brick.graphics.drawRect(0, 0, BRICKS_WIDTH, BRICKS_HEIGHT);
+            brick.graphics.endFill();
+            stage.addChild(brick);
+        }
+
+        function createBall() {
+            ball = new createjs.Shape();
+            ball.graphics.beginFill("Red").drawCircle(0, 0, 8);
+            ball.x = 100;
+            ball.y = 100;
+            stage.addChild(ball);
+        }
+
+        function createPaddle() {
+            paddle = new createjs.Shape();
+            paddle.width = PADDLE_WIDTH;
+            paddle.height = PADDLE_HEIGHT;
+            paddle.graphics.beginFill('#000000').drawRect(0, 0, paddle.width, paddle.height);
+            //paddle.x = stage.canvas.width/2-PADDLE_WIDTH/2;
+            paddle.y = 200;//stage.canvas.height*0.9;
+            stage.addChild(paddle);
         }
     </script>
 </body>
